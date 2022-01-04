@@ -7,6 +7,9 @@
     --fontBig: 46px;
     --header-height: 80px;
     --header-padding: 48px;
+    --max-width: 1240px;
+    --bg-second: #f9fafa;
+    --bottom-header-height: 120px;
 }
 
 /* Reset CSS */
@@ -19,7 +22,7 @@
 body {
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
-    background-color: #f9fafa;
+    background-color: var(--bg-second);
 }
 
 ul {
@@ -42,9 +45,9 @@ img {
 /* reusable class */
 .container {
     position: relative;
-    max-width: 1200px;
+    max-width: var(--max-width);
     margin: auto;
-    padding: 0 80px;
+    padding: 0 20px;
 }
 
 .btn {
@@ -63,15 +66,16 @@ img {
     justify-content: space-between;
 }
 
-.w-100 {
-    width: 100%;
+.bg-lpink {
+    background-color: var(--lpink);
 }
+
 
 /* top header */
-.header-wrapper {
-}
-
+/* .header-wrapper {
+} */
 .top-header {
+    background-color: var(--white);
     height: var(--header-height);
     padding: 0 var(--header-padding);
     display: flex;
@@ -80,6 +84,10 @@ img {
     width: 100%;
     box-shadow: 0 2px 18px 0 rgb(129 162 182 / 20%);
     line-height: 1.5;
+    position:fixed;
+    top: 0;
+    z-index: 6;
+
 }
 
 .left-wrapper {
@@ -104,15 +112,20 @@ img {
     margin-left: 50px;
 }
 
-.mode-view-desktop {
+.mode-view > a {
     position: relative;
     width: 100%;
 }
 
-.mode-view-desktop > img {
+.mode-view > a > img {
     width: 30px;
     height: 30px;
     display: block;
+}
+
+.mode-view > a > img:hover {
+    filter: invert(29%) sepia(59%) saturate(2914%) hue-rotate(211deg) brightness(101%) contrast(108%);
+    opacity: .8;
 }
 
 .divided {
@@ -125,22 +138,8 @@ img {
     opacity: 0.5;
 }
 
-.mode-view-mobile {
-    position: relative;
-    width: 100%;
-}
 
 
-.mode-view-mobile > img {
-    width: 30px;
-    height: 30px;
-    display: block;
-}
-
-.mode-view-mobile > img:hover {
-    filter: invert(29%) sepia(59%) saturate(2914%) hue-rotate(211deg) brightness(101%) contrast(108%);
-    opacity: .8;
-}
 
 .right-wrapper {
     display: flex;
@@ -183,9 +182,13 @@ img {
 /* Bottom header */
 .bottom-header {
     width: 100%;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    background-color: rgba(0, 0, 0, 0);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: fixed;
+    background-color: var(--bg-second);
+    top: var(--header-height);
+    z-index: 5;
+    height: var(--bottom-header-height);
 }
 
 .author-logo {
@@ -199,6 +202,7 @@ img {
 
 .author-logo:hover {
     background-color: var(--black);
+    transition: all .5s ease;
 }
 
 .author-logo > span {
@@ -233,6 +237,10 @@ img {
     color: var(--black);
 }
 
+.main-menu > li > a:hover {
+    color: var(--pink);
+    transition: all .3s ease;
+}
 
 
 .main-menu > li > a.active {
@@ -252,11 +260,69 @@ img {
     display: block;
     width: 25px;
     height: 25px;
-    color: red;
-}
-
-.main-contact-icon:hover {
     
 }
 
+.main-contact-icon:hover {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(7%) saturate(7489%) hue-rotate(280deg) brightness(82%) contrast(99%);
+}
+
 /* End bottom header */
+
+/* Main Part */
+main {
+    margin-top: calc( var(--header-height) + var(--bottom-header-height) + 20px);
+}
+
+/* Banner */
+.banner {
+    position: relative;
+    width: 100%;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+/* Introduction */
+.introduction {
+    margin-top: 30px;
+}
+
+.introduction-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.introduction-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.introduction-description > h3 {
+    font-size: var(--fontBig);
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.introduction-description > h3 > span {
+    color: var(--pink);
+}
+
+.introduction-description > p {
+    line-height: 1.5;
+    font-weight: 300;
+    margin-top: 30px;
+}
+
+.introduction-image {
+    object-fit: cover;
+    width: 100%;
+    height: 560px;
+} 
