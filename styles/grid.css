@@ -4,6 +4,7 @@
     margin: 0 -15px;
 }
 
+
 /* Select any elements contain "col-" */
 [class*= "col-"] {
     padding: 0 15px;
