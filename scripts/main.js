@@ -13,7 +13,7 @@ function scrollToTop() {
     scroll.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({
-            top: 400,
+            top: 0,
             behavior: 'smooth',
         });
     })

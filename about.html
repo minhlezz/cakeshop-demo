@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/grid.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="instagram">
+        <h1 class="instagram-title">Instagram</h1>
+        <div class="instagram-wrapper">
+            <!-- Image Grid -->
+            <div class="row" id="instagramID">
+            </div>
+            <!-- End Image Grid -->
+        </div>
+        <div id="loadmore" class="btn loadmore-btn">
+            Load More
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal-box" id="modal">
+        <!-- Close button -->
+        <span class="modal-close">&times;</span>
+
+        <div class="modal-wrapper">
+            <!--Prev Button -->
+            <div class="arrow-btn" id="prev-btn" onclick="onPrev(-1)">
+                <img src="./images/general/left-arrow.svg" alt="">
+            </div>
+            <!-- Content -->
+            <div class="modal-content" id="md-content">
+            </div>
+            <!-- Next Button -->
+            <div class="arrow-btn" id="next-btn" onclick="onNext(1)">
+                <img src="./images/general/right-arrow.svg" alt="">
+            </div>
+        </div>
+        <!-- End Modal Content -->
+    </div>
+    <!-- End Modal -->
+    <script src="./scripts/instagram.js"></script>
+    <script src="./scripts/loadmore.js"></script>
+    <script src="./scripts/modalEvents.js"></script>
+</body>
+
+</html>
