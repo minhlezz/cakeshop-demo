@@ -82,12 +82,12 @@ function renderCollection(collectionID) {
 function showModalCollection() {
     let modalClose = document.querySelector('.modal-close-icon');
     let modalCollection = document.querySelector('.modal-collection');
-    let collectionCard = document.querySelectorAll('.collection-card');
     let mdCollectionContent = document.querySelector('.modal-collection-content');
     //Loading IMG into Modal Data;
     renderModal(mdCollectionContent);
     //Toggle Modal
-    toggle(modalClose, modalCollection, collectionCard);
+    toggle(modalClose, modalCollection);
+    requestingFullScreen();
 
 }
 
@@ -158,6 +158,32 @@ function onNextItem(n) {
     showCurrentSlide(currentSlideIndex += n);
 }
 
+function requestingFullScreen() {
+    let fullScreen = document.querySelector('.modal-fullscreen');
+    let exitFSc = document.querySelector('.exit-fullscreen');
+
+    fullScreen.addEventListener("click", () => {
+        openFullscreen();
+    })
+
+    exitFSc.addEventListener("click", () => {
+        closeFullscreen();
+    })
+}
+
+function openFullscreen() {
+    let modalCollection = document.querySelector('.modal-collection');
+
+    if (modalCollection.requestFullscreen) {
+        modalCollection.requestFullscreen();
+    }
+}
+
+function closeFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
+}
 
 
 

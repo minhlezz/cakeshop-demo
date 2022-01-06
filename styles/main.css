@@ -796,3 +796,24 @@ footer {
 
 
 /* End Collection Modal */
+
+
+.exit-fullscreen {
+    display: none;
+}
+:fullscreen .fullscreen{
+   display: none;
+}
+:fullscreen .modal-close-icon{
+    display: none;
+}
+
+:fullscreen .modal-bar {
+    justify-content: flex-end;
+}
+
+:fullscreen .exit-fullscreen {
+    display: block;
+    float: right;
+}
+
