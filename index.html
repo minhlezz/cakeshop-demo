@@ -152,24 +152,42 @@
             <div class="collection">
                 <h1 class="collection-title">My Cake Collection</h1>
                 <div class="collection-slide" id="slideCollectionID">
-                    <div class="collection-card">
-                        <img src="./images/slider/jellycake.jpg" alt="1" class="collection-image">
+                    <!-- Render Image here -->
+                </div>
+            </div>
+            <!-- Modal Collection -->
+            <div class="modal-collection">
+                <!-- Horizontal bar  -->
+                <div class="modal-bar">
+                    <div class="modal-fullscreen d-flex-center-center">
+                        <img src="./images/general/fullscreen-icon.svg" alt="">
                     </div>
-                    <div class="collection-card">
-                        <img src="./images/slider/pinkcake.jpg" alt="1" class="collection-image">
+                    <div class="modal-close-icon d-flex-center-center">
+                        <span>&times;</span>
                     </div>
-                    <div class="collection-card">
-                        <img src="./images/slider/whitecake.jpg" alt="1" class="collection-image">
+                </div>
+                <!-- Content -->
+                <div class="modal-collection-body">
+                    <!-- prev button -->
+                    <div class="d-flex-center-btw">
+                        <div class="arrow d-flex-center-center" 
+                        id="prev-btn" onclick="onPrevItem(-1)">
+                            &#10094;
+                        </div>
+                        <div class="modal-collection-content">
+                            <!-- Loading images here -->
+                        </div>
+                        <!-- Next button -->
+                        <div class="arrow d-flex-center-center" id="next-btn"
+                         onclick="onNextItem(1)">
+                            &#10095;
+                        </div>
                     </div>
-                    <div class="collection-card">
-                        <img src="./images/slider/whitecake-2.jpg" alt="1" class="collection-image">
+                    <div class="modal-collection-info d-flex-center-center">
+                        <h1 class="modal-collection-title">I'm an image title</h1>
+                        <p class="modal-collection-description">Describe your image here.</p>
                     </div>
-                    <div class="collection-card">
-                        <img src="./images/slider/whitecake-3.jpg" alt="1" class="collection-image">
-                    </div>
-                    <div class="collection-card">
-                        <img src="./images/slider/whitecake-4.jpg" alt="1" class="collection-image">
-                    </div>
+
                 </div>
             </div>
             <!-- End Collection -->
@@ -224,7 +242,7 @@
 
     <!-- Script -->
     <script src="./scripts/main.js"></script>
-    <script src="./scripts/collection-slide.js"></script>
+    <script src="./scripts/collection.js"></script>
     <script src="./scripts/instagram.js"></script>
     <script src="./scripts/loadmore.js"></script>
 

@@ -18,6 +18,12 @@
     --bottom-header-height: 120px;
 }
 
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
 /* Reset CSS */
 * {
     margin: 0;
@@ -89,6 +95,13 @@ img {
 
 .p-5 {
     padding: 5px;
+}
+
+.d-none {
+    display: none;
+}
+.p-abs {
+    position: absolute;
 }
 
 .loadmore-btn {
@@ -174,9 +187,6 @@ img {
     margin-right: 20px;
     opacity: 0.5;
 }
-
-
-
 
 .right-wrapper {
     display: flex;
@@ -446,6 +456,7 @@ main {
     height: 100%;
     overflow: hidden;
     padding: 0 10px;
+    cursor: pointer;
 }
 .collection-image {
     display: block;
@@ -685,3 +696,103 @@ footer {
 } */
 
 /* End Modal */
+
+
+/* Collection Modal */
+.modal-collection {
+    display: none;
+    flex-direction: column;
+
+    position: fixed;
+    z-index: 90;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--white);
+    margin: auto;
+    animation-name: fade;
+    animation-duration: 1s;
+    user-select: none;
+}
+
+.modal-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-fullscreen,
+.modal-close-icon {
+    width: 120px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.modal-fullscreen > img {
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+}
+.modal-close-icon > span {
+    font-size: 50px;
+}
+
+
+
+.modal-collection-body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-collection-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+
+}
+
+.modal-collection-content > img {
+    object-fit: cover;
+    width: 100%;
+    height: 540px;
+    max-width: 500px ;
+}
+
+.modal-collection-info {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.modal-collection-title {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.modal-collection-description {
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 24px;
+}
+
+.arrow {
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    margin: auto 0;
+    font-size: 40px;
+    color: rgba(41,35,37, .5);
+    cursor: pointer;
+}
+
+
+
+/* End Collection Modal */
