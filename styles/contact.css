@@ -1,0 +1,209 @@
+
+.contact-wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--lpink);
+    text-align: center;
+    color: #403637;
+    padding: 60px;
+}
+
+
+.contact-title {
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+.contact-title > h1{
+    font-size: 46px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+
+.contact-description {
+    width: 50%;
+    line-height: 1.5;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 42px;
+}
+
+
+.contact-info {
+    margin-bottom: 42px;
+}
+
+
+
+.contact-info-online {
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.contact-info-online > a {
+    text-decoration: none;
+    color: inherit;
+    
+}
+
+
+.contact-info-address {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* Styling Form */
+form {
+    background-color: var(--white);
+    height: 100%;
+    width: 100%;
+    padding: 100px;
+    width: 800px;
+}
+
+input[type=text],textarea {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid var(--black);
+    padding: 12px;
+    outline: none;
+    resize: none;
+}
+
+input[type=submit] {
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    background-color: var(--white);
+}
+
+input[type=submit]:hover {
+    color: var(--pink);
+}
+textarea {
+    height: 150px;
+    margin-top: 15px;
+}
+
+#email {
+    position: relative;
+    /* background-color: #E8CFD31A;
+    border-bottom: 1px solid rgba(255, 64, 64, 0.42); */
+}
+
+/* Styling Popup Message */
+.popup {
+    display: none;
+    position: absolute;
+    width: 250px;
+    height: 35px;
+    line-height: 35px;
+    bottom: -50px;
+    left: 0;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    z-index: 20;
+    background-color: #555;
+}
+
+.popup::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25%;
+    transform: translate(-100%, -100%);
+
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent  transparent #555 transparent;
+
+}
+
+.popup .warning {
+    background-color: rgba(231, 84, 25, .7);
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+/* Modal Contact styles */
+.modal-contact {
+
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+
+    display: none;
+    align-items: center;
+}
+
+.modal-contact-content {
+    position: relative;
+    background-color: var(--white);
+    margin: auto;
+    padding: 20px 0;
+    width: 500px;
+}
+
+.modal-contact-content .row {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-contact-content .row .col-12 {
+    margin-top: 12px;
+}
+
+
+
+.modal-contact-title {
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+.fieldname {
+    font-weight: 700;
+}
+
+.confirm {
+    width: 100%;
+    height: 50px;
+}
+
+.confirm-btn {
+    text-align: center;
+    text-transform: uppercase;
+    width: 250px;
+    line-height: 50px;
+    margin: 0 auto;
+    background-color: var(--lpink);
+    letter-spacing: 0.0625rem;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.confirm-btn:hover {
+    background-color: var(--pink);
+}

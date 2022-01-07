@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/grid.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/contact.css">
 </head>
 
 <body>
@@ -314,7 +315,74 @@
     <!-- End Order Temlate -->
     <!-- Contact Template -->
     <main id="contact" class="main-tab">
-        Contact
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-title">
+                    <h1>Contact Me</h1>
+                </div>
+                <div class="contact-description">
+                    I'm a paragraph. Click here to add your own text and edit me. I’m a great place for you to tell a
+                    story and let your users know a little more about you.
+                </div>
+                <div class="contact-info">
+                    <div class="contact-info-online">
+                        <span>123-456-7890</span>
+                        <!-- space space | -->
+                        &nbsp;&nbsp;&#124;&nbsp;&nbsp;
+                        <a href="mailto:INFO@MYSITE.COM" data-auto-recognition="true">INFO@MYSITE.COM </a>
+                        &nbsp;&nbsp;&#124;&nbsp;&nbsp;
+                        <a href="https://www.wix.com/demone2/wedding-cakes/order-online" target="_self">
+                            ORDER ONLINE HERE
+                        </a>
+                    </div>
+                    <div class="contact-info-address">
+                        <p>Pick up is available from 500 Terry A Francois Blvd</p>
+                        <p>San Francisco, CA 94158, USA</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form class="form-contact" id="form-contact-id">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" id="name" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="col-6 p-rel">
+                                <input type="text" id="email" name="email" placeholder="Email" onkeyup="onChangeEmail()"
+                                    onclick="onChangeEmail()" onchange="onChangeEmail()" required>
+                                <div class="popup">
+                                    <span class="warning">!</span>
+                                    <span>Please enter valid email address.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="text" id="phone" name="phone" placeholder="Phone" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea id="message" name="message" placeholder="Message" required></textarea>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Contact -->
+        <div class="modal-contact" id="modal-contact">
+            <div class="modal-contact-content">
+                <h1 class="modal-contact-title">Request Contaction</h1>
+                <div id="contact-template">
+                 <!-- Loading template contact here -->
+                </div>
+                <div class="confirm" id="modal-confirm-btn">
+                    <div class="confirm-btn">Confirmation</div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Contact -->
     </main>
     <!-- Contact Template -->
 
@@ -331,6 +399,7 @@
     <script src="./scripts/collection.js"></script>
     <script src="./scripts/instagram.js"></script>
     <script src="./scripts/loadmore.js"></script>
+    <script src="./scripts/form.js"></script>
 
 </body>
 

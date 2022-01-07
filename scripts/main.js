@@ -3,7 +3,7 @@ main()
 function main() {
     hideAllTabs();
     onTabInit();
-    // scrollToTop
+    // scrollToTopHeader
     scrollToTop();
     showReadmoreModal();
 
@@ -20,6 +20,15 @@ function scrollToTop() {
         });
     })
 }
+
+function autoScrollTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+}
+
+
 
 function showReadmoreModal() {
     let readMore = document.querySelector('.header-link');
@@ -74,4 +83,5 @@ function removeClassActive() {
 function showCurrentTab(e, tabName) {
     document.getElementById(tabName).style.display = "block";
     e.currentTarget.className += " active";
+    setTimeout(() => autoScrollTop(), 500);
 }

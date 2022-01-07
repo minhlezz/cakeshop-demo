@@ -3,6 +3,10 @@
     src: url(../fonts/madeFor.woff2) format('woff');
 }
 
+@font-face {font-family: "Avenir-light"; 
+    src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2") 
+    format("woff2");}
+
 :root {
     --white: #fff;
     --pink: #D3B3B8;
@@ -33,7 +37,7 @@
 
 body {
     font-size: 1rem;
-    font-family: 'madeFor';
+    font-family: Avenir-light;
     background-color: var(--bg-second);
 }
 
@@ -51,6 +55,10 @@ button {
 
 img {
     max-width: 100%;
+}
+
+h1 {
+    font-family: madeFor;
 }
 
 
@@ -102,6 +110,10 @@ img {
 }
 .p-abs {
     position: absolute;
+}
+
+.p-rel {
+    position: relative;
 }
 
 .h-100{
@@ -327,6 +339,7 @@ img {
 /* Main Part */
 main {
     margin-top: calc( var(--header-height) + var(--bottom-header-height) + 20px);
+    margin-bottom: 100px;
 }
 
 
@@ -358,6 +371,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  
 }
 
 .introduction-description > h3 {
@@ -365,6 +379,7 @@ main {
     font-weight: 400;
     text-transform: uppercase;
     width: 100%;
+    font-family: madeFor;
 }
 
 .introduction-description > h3 > span {
@@ -733,6 +748,7 @@ footer {
 }
 
 .modal-fullscreen,
+.modal-contact-close-icon,
 .modal-collection-close-icon {
     width: 120px;
     height: 36px;
@@ -746,6 +762,7 @@ footer {
 }
 
 .modal-close-icon,
+.modal-contact-close-icon,
 .modal-collection-close-icon > span {
     font-size: 50px;
 }
