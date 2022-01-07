@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/grid.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/about.css">
 </head>
 
 <body>
@@ -86,16 +87,20 @@
                         </div>
                         <div class="right-wrapper">
                             <ul class="main-menu">
-                                <li><a href="#" class="active">Home</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Order Online</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="javascript:void(0)" class="tablinks active"
+                                        onclick="changeTab(event, 'home')">Home</a></li>
+                                <li><a href="javascript:void(0)" class="tablinks"
+                                        onclick="changeTab(event, 'about')">About</a></li>
+                                <li><a href="javascript:void(0)" class="tablinks"
+                                        onclick="changeTab(event, 'order')">Order Online</a></li>
+                                <li><a href="javascript:void(0)" class="tablinks"
+                                        onclick="changeTab(event, 'contact')">Contact</a></li>
                             </ul>
                             <div class="main-contact">
-                                <a href="#" class="main-contact-link">
+                                <a href="javascript:void(0)" class="main-contact-link">
                                     <img src="./images/general/facebook-svg.svg" alt="" class="main-contact-icon">
                                 </a>
-                                <a href="#" class="main-contact-link">
+                                <a href="javascript:void(0)" class="main-contact-link">
                                     <img src="./images/general/instagram-svg.svg" alt="" class="main-contact-icon">
                                 </a>
                             </div>
@@ -108,7 +113,7 @@
     </header>
     <!-- End header -->
 
-    <main>
+    <main id="home" class="main-tab">
         <!-- Section -->
         <div class="container">
             <!-- Banner -->
@@ -193,7 +198,7 @@
                         <img src="./images/general/fullscreen-icon.svg" class="fullscreen" alt="">
                         <img src="./images/general/exit-fullscreen.svg" class="exit-fullscreen" alt="">
                     </div>
-                    <div class="modal-close-icon d-flex-center-center">
+                    <div class="modal-collection-close-icon d-flex-center-center">
                         <span>&times;</span>
                     </div>
                 </div>
@@ -260,6 +265,58 @@
         </div>
         <!-- End Modal -->
     </main>
+
+    <!-- About Template -->
+    <main id="about" class="main-tab">
+        <div class="container">
+            <div class="about">
+                <h1 class="about-title">about</h1>
+                <h2 class="about-author">BRIAN HILL, TOP PASTRY CHEF</h2>
+                <p class="about-description">I'm a paragraph. Click here to add your own text and edit me. It’s easy.
+                    Just
+                    click “Edit Text” or double click me to add your own content and make changes to the font. Feel free
+                    to
+                    drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let
+                    your
+                    users know a little more about you.</p>
+                <div class="author">
+                    <div class="author-image">
+                        <img src="./images/general/authorwix.jpg" alt="">
+                    </div>
+                    <div class="author-description">
+                        <p>
+                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit
+                            Text”
+                            or double click me to add your own content and make changes to the font. Feel free to drag
+                            and
+                            drop me anywhere you like on your page. I’m a great place for you to tell a story and let
+                            your
+                            users know a little more about you.</p>
+                        <p class="author-description-2">
+                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit
+                            Text”
+                            or double click me to add your own content and make changes to the font. Feel free to drag
+                            and
+                            drop me anywhere you like on your page. I’m a great place for you to tell a story and let
+                            your
+                            users know a little more about you.</p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End About Template -->
+    <!-- Order Temlate -->
+    <main id="order" class="main-tab">
+        Order Online
+    </main>
+    <!-- End Order Temlate -->
+    <!-- Contact Template -->
+    <main id="contact" class="main-tab">
+        Contact
+    </main>
+    <!-- Contact Template -->
 
     <!-- Footer -->
     <footer>

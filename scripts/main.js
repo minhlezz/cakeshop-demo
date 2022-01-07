@@ -1,10 +1,12 @@
 main()
 
 function main() {
-
+    hideAllTabs();
+    onTabInit();
     // scrollToTop
     scrollToTop();
     showReadmoreModal();
+
 }
 
 
@@ -32,4 +34,44 @@ function showReadmoreModal() {
         readMoreModal.style.display = "none";
     })
 
+}
+
+function changeTab(e, tabName) {
+    //HideAllTab && remove active class
+    hideAllTabs();
+    removeClassActive();
+    //Display current tab;
+    showCurrentTab(e, tabName);
+}
+function onTabInit() {
+    let home = document.getElementById('home');
+    home.style.display = 'block';
+
+}
+
+function hideAllTabs() {
+    let tabContent = document.getElementsByClassName('main-tab');
+    let i;
+    //Hide content all tabs
+    for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
+    }
+
+    //Remove active class
+
+}
+
+function removeClassActive() {
+    let tablinks = document.getElementsByClassName("tablinks");
+    let i;
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace("active", "");
+    }
+}
+
+
+
+function showCurrentTab(e, tabName) {
+    document.getElementById(tabName).style.display = "block";
+    e.currentTarget.className += " active";
 }

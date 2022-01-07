@@ -80,7 +80,7 @@ function renderCollection(collectionID) {
 
 //Handling Modal
 function showModalCollection() {
-    let modalClose = document.querySelector('.modal-close-icon');
+    let modalClose = document.querySelector('.modal-collection-close-icon');
     let modalCollection = document.querySelector('.modal-collection');
     let mdCollectionContent = document.querySelector('.modal-collection-content');
     //Loading IMG into Modal Data;

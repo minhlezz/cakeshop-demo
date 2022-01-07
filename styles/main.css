@@ -329,6 +329,7 @@ main {
     margin-top: calc( var(--header-height) + var(--bottom-header-height) + 20px);
 }
 
+
 /* Banner */
 .banner {
     position: relative;
@@ -732,7 +733,7 @@ footer {
 }
 
 .modal-fullscreen,
-.modal-close-icon {
+.modal-collection-close-icon {
     width: 120px;
     height: 36px;
     cursor: pointer;
@@ -743,7 +744,9 @@ footer {
     width: 24px;
     object-fit: cover;
 }
-.modal-close-icon > span {
+
+.modal-close-icon,
+.modal-collection-close-icon > span {
     font-size: 50px;
 }
 
@@ -840,8 +843,10 @@ footer {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(50%);    
+    transform: translateX(-50%);    
+    cursor: pointer;
 }
+
 
 .modal-readmore-content {
     position: relative;
@@ -892,5 +897,11 @@ footer {
 
 .edit-now:hover {
     opacity: .8;
+}
+
+
+.animation {
+    animation-name: fade;
+    animation-duration: 2s;
 }
 /* End readmore modal */
