@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/about.css">
     <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/chat.css">
 </head>
 
 <body>
@@ -116,7 +117,7 @@
 
     <main id="home" class="main-tab">
         <!-- Section -->
-        <div class="container">
+        <div class="container animation">
             <!-- Banner -->
             <div class="banner">
                 <img src="https://static.wixstatic.com/media/c22c23_3a7223661aa547a0bfecaa6511eb5c95~mv2_d_4008_1466_s_2.png/v1/fill/w_1078,h_658,al_c,q_90,usm_0.66_1.00_0.01/c22c23_3a7223661aa547a0bfecaa6511eb5c95~mv2_d_4008_1466_s_2.webp"
@@ -310,12 +311,16 @@
     <!-- End About Template -->
     <!-- Order Temlate -->
     <main id="order" class="main-tab">
-        Order Online
+       <div class="container animation">
+          <div class="order-view">
+            <h1>Order View</h1>
+          </div>
+       </div>
     </main>
     <!-- End Order Temlate -->
     <!-- Contact Template -->
     <main id="contact" class="main-tab">
-        <div class="container">
+        <div class="container animation">
             <div class="contact-wrapper">
                 <div class="contact-title">
                     <h1>Contact Me</h1>
@@ -361,8 +366,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <textarea id="message" name="message" placeholder="Message" required></textarea>
+                            <div class="col-12 ">
+                                <textarea class="contact-message-text" id="message" name="message" placeholder="Message"
+                                    required></textarea>
                             </div>
                         </div>
                         <input type="submit" value="Submit">
@@ -375,7 +381,7 @@
             <div class="modal-contact-content">
                 <h1 class="modal-contact-title">Request Contaction</h1>
                 <div id="contact-template">
-                 <!-- Loading template contact here -->
+                    <!-- Loading template contact here -->
                 </div>
                 <div class="confirm" id="modal-confirm-btn">
                     <div class="confirm-btn">Confirmation</div>
@@ -385,6 +391,53 @@
         <!-- End Modal Contact -->
     </main>
     <!-- Contact Template -->
+
+    <!-- Chat Box -->
+    <button class="chat-btn" id="chat-btn">Let's Chat!</button>
+    <div class="chat-popup" id="chat-box">
+        <form class="chat-container">
+            <div class="chat-header d-flex-center-center">
+                <div class="chat-header-wrapper">
+                    <h2 class="chat-header-title">Wedding Cake By Brian Hill</h2>
+                    <div class="chat-header-description">
+                        <span class="green-circle"></span>
+                        <span>We’ll reply as soon as we can</span>
+                    </div>
+                </div>
+                <div class="chat-close-btn d-flex-center-center" id="chat-close"><span>&times;</span></div>
+            </div>
+            <div class="chat-body">
+                <div class="chat-content">
+                    <div class="d-flex-center-center">
+                        <div class="chat-time">YESTERDAY AT 8:07 PM</div>
+                    </div>
+                    <div class="chat-user">
+                        <div class="chat-user-sent">
+                            <div class="chat-user-sent-msg">
+                                Hi!
+                            </div>
+                        </div>
+                        <div class="chat-user-arrived">
+                            <div class="chat-user-arrived-msg">
+                                What's up
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-message">
+                    <div class="chat-message-input">
+                        <textarea placeholder="Type your message..." name="message" id="message"></textarea>
+                    </div>
+                    <div class="chat-message-tools">
+                        <img class="tool-image" src="./images/general/smile-icon.svg" id="reaction" alt="">
+                        <img class="tool-image" src="./images/general/attactment.svg" id="attactment" alt="">
+                        <img class="tool-image" src="./images/general/send-icon.svg" id="send" alt="">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- End Chat Box -->
 
     <!-- Footer -->
     <footer>
@@ -400,6 +453,7 @@
     <script src="./scripts/instagram.js"></script>
     <script src="./scripts/loadmore.js"></script>
     <script src="./scripts/form.js"></script>
+    <script src="./scripts/chat.js"></script>
 
 </body>
 

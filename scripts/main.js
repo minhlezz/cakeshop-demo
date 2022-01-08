@@ -83,5 +83,4 @@ function removeClassActive() {
 function showCurrentTab(e, tabName) {
     document.getElementById(tabName).style.display = "block";
     e.currentTarget.className += " active";
-    setTimeout(() => autoScrollTop(), 500);
 }

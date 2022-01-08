@@ -10,6 +10,8 @@
     text-align: center;
     color: #403637;
     padding: 60px;
+    animation-name: fade;
+    animation-duration: 2s;
 }
 
 
@@ -59,7 +61,7 @@
 }
 
 /* Styling Form */
-form {
+.form-contact {
     background-color: var(--white);
     height: 100%;
     width: 100%;
@@ -67,7 +69,7 @@ form {
     width: 800px;
 }
 
-input[type=text],textarea {
+input[type=text] {
     border: none;
     width: 100%;
     border-bottom: 1px solid var(--black);
@@ -87,10 +89,7 @@ input[type=submit] {
 input[type=submit]:hover {
     color: var(--pink);
 }
-textarea {
-    height: 150px;
-    margin-top: 15px;
-}
+
 
 #email {
     position: relative;
@@ -206,4 +205,15 @@ textarea {
 
 .confirm-btn:hover {
     background-color: var(--pink);
+}
+
+.contact-message-text {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid var(--black);
+    padding: 12px;
+    outline: none;
+    resize: none;
+    height: 150px;
+    margin-top: 15px;
 }
