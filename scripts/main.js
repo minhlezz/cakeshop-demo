@@ -5,12 +5,7 @@ function main() {
 }
 
 function onInit() {
-    initReadMoreModal();
-    initializeTabs();
-    initCollection();
+    console.log('init');
 }
 
-function initReadMoreModal() {}
-function initializeTabs() {};
-function scrollToTop() {};
-function initCollection() {};
+

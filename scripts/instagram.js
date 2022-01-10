@@ -63,32 +63,30 @@ let instagrams = [
         commentTime: "1d",
     },
 ];
+
 let reverseInstagrams = instagrams.reverse();
-
 let cloneInstagrams = [...instagrams, ...reverseInstagrams];
-
-
+let currentImageInstagramIndex = 1;
 
 // Initialize 
-onInit()
+initInstagram()
 
 
-function onInit() {
-    showImageInstagram();
+function initInstagram() {
+    initImageInstagram();
 }
 
 
-function showImageInstagram() {
+function initImageInstagram() {
     let instagramID = document.querySelector("#instagram-photos");
-    // Load template Image 
-    renderImages(instagramID);
+    renderImageInstagram(instagramID);
 
 }
 
-function renderImages(instagramID) {
+function renderImageInstagram(instagramID) {
     cloneInstagrams.forEach((element, index) => {
         let photoDetail = `
-                <div class="col-4 p-5" id="instaPhotos" onclick="showModal(); currentSlide(${index})">
+                <div class="col-4 p-5" id="instaPhotos" onclick="showModalInstagram(); currentImageSelection(${index})">
                     <div class="instagram-photos">
                         <img src="${element.image}" alt="1" class="instagram-image">
                         <div class="instragram-photos-content">
@@ -103,21 +101,32 @@ function renderImages(instagramID) {
 }
 
 //Trigger onClick photos show Modal Box 
-function showModal() {
-    let content = document.querySelector('#md-content');
-    let modalID = document.getElementById('modal');
-    let closeBtn = document.getElementsByClassName('modal-close');
+function showModalInstagram() {
+    toggleModalInstagram();
+    renderContentModalInstagram();
 
+}
+
+function toggleModalInstagram() {
+    let modalID = document.getElementById('modal');
     openModal(modalID);
-    loadContentModal(content);
-    closeModal(closeBtn, modalID);
+    closeModal(modalID);
 }
 
 function openModal(modalID) {
     modalID.style.display = "block";
 }
 
-function loadContentModal(content) {
+function closeModal(modalID) {
+    let closeBtn = document.getElementsByClassName('modal-close');
+
+    closeBtn[0].addEventListener("click", () => {
+        modalID.style.display = "none";
+    });
+}
+
+function renderContentModalInstagram() {
+    let content = document.querySelector('#md-content');
     cloneInstagrams.forEach((item) => {
         let modalDetail = `
             <div class="modal-content-slide">
@@ -159,51 +168,49 @@ function loadContentModal(content) {
     });
 }
 
-function closeModal(closeBtn, modalID) {
-    closeBtn[0].addEventListener("click", () => {
-        modalID.style.display = "none";
-    })
+
+function currentImageSelection(index) {
+    showSlides(currentImageInstagramIndex = index);
 }
 
 
+function showSlides(index) {
+    let photos = document.querySelectorAll(".modal-content-slide");
+    hideAllPhotosInstagramInSlideshow(photos);
+    setListRange(index, photos)
+    displayCurrentPhoto(photos)
 
-
-//Handling Modal Gallery
-var slideIndex = 1;
-
-function currentSlide(index) {
-    showSlides(slideIndex = index);
 }
 
 
-function showSlides(currentIndex) {
-    let slides = document.querySelectorAll(".modal-content-slide");
-    let i;
-
-    //Set slideIndex = lastIndex at the end of List
-    if (currentIndex >= slides.length) {
-        slideIndex = slides.length - 1;
-    };
-
-    //Set slideIndex = firstIndex at the head of List
-    if (currentIndex < 1) {
-        slideIndex = 0
-    };
-    // Hide All Elements as opening the modal
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+function hideAllPhotosInstagramInSlideshow(photos) {
+    for (let i = 0; i < photos.length; i++) {
+        photos[i].style.display = "none";
     }
 
-    // Display current slide 
-    slides[slideIndex].style.display = "flex";
-
 }
 
-function onPrev(n) {
-    showSlides(slideIndex += n);
+function displayCurrentPhoto(photos) {
+    photos[currentImageInstagramIndex].style.display = "flex";
 }
 
-function onNext(n) {
-    showSlides(slideIndex += n);
+function setListRange(index, photos) {
+    if (index >= photos.length) {
+        currentImageInstagramIndex = photos.length - 1;
+    };
+
+    if (index < 1) {
+        currentImageInstagramIndex = 0
+    };
+}
+
+
+
+function onPrevPhotoInstagram(numberPrev) {
+    showSlides(currentImageInstagramIndex += numberPrev);
+}
+
+function onNextPhotoInstagram(numberNext) {
+    showSlides(currentImageInstagramIndex += numberNext);
 }
 

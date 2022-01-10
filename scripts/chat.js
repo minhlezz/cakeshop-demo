@@ -1,24 +1,36 @@
 
-chat()
+initializeChat()
 
-function chat() {
-    toggleChat();
+function initializeChat() {
+
+    registerOpenChatButton();
+    registerCloseChatButton();
 }
 
-
-function toggleChat() {
-    let chatBtn = document.getElementById('chat-btn');
-    let chatClose = document.getElementById('chat-close');
-
-    let chatBox = document.getElementById('chat-box');
-
+function registerOpenChatButton() {
+    const chatBtn = document.getElementById('chat-btn');
     chatBtn.addEventListener('click', () => {
+        toggleChat(true)
+
+    })
+}
+
+function registerCloseChatButton() {
+    const chatClose = document.getElementById('chat-close');
+    chatClose.addEventListener('click', () => {
+        toggleChat(false)
+    })
+}
+
+function toggleChat(value) {
+    const chatBtn = document.getElementById('chat-btn');
+    const chatBox = document.getElementById('chat-box');
+    if (value) {
         chatBox.style.display = 'block';
         chatBtn.style.display = 'none';
-    })
-
-    chatClose.addEventListener('click', () => {
+    } else {
         chatBox.style.display = 'none';
         chatBtn.style.display = 'block';
-    })
+    }
 }
+

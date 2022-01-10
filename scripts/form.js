@@ -2,41 +2,46 @@
 form()
 
 function form() {
-    submitForm();
+    initializeForm();
 
 }
 
 
 
-function submitForm() {
-    let form = document.getElementById('form-contact-id');
+function initializeForm() {
     let formResult = {};
+    const form = document.getElementById('form-contact-id');
+    const { email, phone, name, message } = getFormValues();
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        //Get input value
-        let emailValue = form.elements["email"].value.trim();
-        let nameValue = form.elements["name"].value.trim();
-        let phoneValue = form.elements["phone"].value.trim();
-        let messageValue = form.elements["message"].value.trim();
-
-
-
         if (validateEmail(emailValue) === false) {
             showErrorPopup();
         } else {
             formResult = {
-                email: emailValue,
-                name: nameValue,
-                phone: phoneValue,
-                message: messageValue,
+                email,
+                name,
+                phone,
+                message,
             }
 
             showModalFormResult(formResult);
         }
-
-
     })
+}
 
+
+function getFormValues() {
+    const form = document.getElementById('form-contact-id');
+    const email = form.elements["email"].value.trim();
+    const name = form.elements["name"].value.trim();
+    const phone = form.elements["phone"].value.trim();
+    const message = form.elements["message"].value.trim();
+    return {
+        email,
+        name,
+        phone,
+        message
+    }
 }
 
 // validate on inputing email field

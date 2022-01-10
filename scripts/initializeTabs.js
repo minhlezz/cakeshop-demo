@@ -3,7 +3,6 @@ initializeTabs();
 function initializeTabs() {
     hideAllTabs();
     initTabDefault();
-    scrollToTop();
 }
 
 function onChangeTab(e, tabName) {
