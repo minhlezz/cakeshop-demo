@@ -11,10 +11,11 @@ function form() {
 function initializeForm() {
     let formResult = {};
     const form = document.getElementById('form-contact-id');
-    const { email, phone, name, message } = getFormValues();
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (validateEmail(emailValue) === false) {
+        const { email, phone, name, message } = getFormValues();
+        if (!validateEmail(email)) {
             showErrorPopup();
         } else {
             formResult = {
@@ -137,8 +138,6 @@ function clearRequestContactForm() {
     while (contactTemplate.hasChildNodes()) {
         contactTemplate.removeChild(contactTemplate.firstChild);
     };
-
-    console.log(contactTemplate);
 }
 
 
