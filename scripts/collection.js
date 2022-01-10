@@ -33,44 +33,53 @@ let collections = [
 ]
 
 
-main();
+initCollection();
 
 var currentIndex = 0;
 
-function main() {
-    showCollectionSlide();
+function initCollection() {
+    showCollectionPhotos();
 }
 
-// Cake collection automatic slideshow
-function showCollectionSlide() {
+function showCollectionPhotos() {
     let collectionID = document.querySelector('#slideCollectionID');
-    let collectionItems = collectionID.children;
-    let i;
 
-    renderCollection(collectionID);
+    renderCollectionView(collectionID);
+    collectionSlider();
 
-    // Moving items to the left;
-    for (i = 0; i < collectionItems.length; i++) {
-        collectionItems[i].style.transform = `translate(-${currentIndex * 200}px )`;
-        collectionItems[i].style.transitionDuration = "1s";
-        collectionItems[i].style.transitionTimingFunction = "linear";
+    //Automatic slideshow
+    setTimeout(showCollectionPhotos, 2000);
+}
 
+function collectionSlider() {
+    const collectionID = document.querySelector('#slideCollectionID');
+    const collectionPhotos = collectionID.children;
+    const collectionLength = collectionPhotos.length;
+
+    transitionItems(collectionPhotos);
+    resetIndexAtLastItem(collectionLength);
+
+}
+
+function transitionItems(collectionPhotos) {
+    for (let i = 0; i < collectionPhotos.length; i++) {
+        collectionPhotos[i].style.transform = `translate(-${currentIndex * 200}px )`;
+        collectionPhotos[i].style.transitionDuration = "1s";
+        collectionPhotos[i].style.transitionTimingFunction = "linear";
     }
-
     currentIndex++;
+}
 
-    //Reset index at the end of collection.
-    if (currentIndex > collectionItems.length) {
+function resetIndexAtLastItem(collectionLength) {
+    if (currentIndex > collectionLength) {
         currentIndex = 0;
     }
-    //re-invoking  showCollectionSlide against
-    setTimeout(showCollectionSlide, 3000);
 }
 
-function renderCollection(collectionID) {
+function renderCollectionView(collectionID) {
     collections.forEach((item, index) => {
         let itemDetail = `
-            <div class="collection-card" onclick="showModalCollection(),getCurrentSlide(${index})" >
+            <div class="collection-card" onclick="onClickModalCollection(),getCurrentSlide(${index})" >
                     <img src="${item.image}" alt="1" class="collection-image">
             </div>
         `
@@ -78,21 +87,18 @@ function renderCollection(collectionID) {
     });
 }
 
-//Handling Modal
-function showModalCollection() {
-    let modalClose = document.querySelector('.modal-collection-close-icon');
-    let modalCollection = document.querySelector('.modal-collection');
+
+function onClickModalCollection() {
     let mdCollectionContent = document.querySelector('.modal-collection-content');
     //Loading IMG into Modal Data;
-    renderModal(mdCollectionContent);
-    //Toggle Modal
-    toggle(modalClose, modalCollection);
-    requestingFullScreen();
+    renderModalCollection(mdCollectionContent);
+    toggleModalCollection();
+    // initRequestFullscreen();
 
 }
 
 // Loading data into Modal
-function renderModal(node) {
+function renderModalCollection(node) {
     collections.forEach(item => {
         let itemDetail = `
             <img src="${item.image}" id="md-img" class="modal-collection-image" alt="">
@@ -102,21 +108,22 @@ function renderModal(node) {
 }
 
 // Toogle Modal
-function toggle(modalClose, modalCollection) {
-    // onClick open Modal
-    displayModal(modalCollection);
-    //Close Modal
-    modalClose.addEventListener("click", () => {
-        modalExit(modalCollection);
-    })
+function toggleModalCollection() {
+    let modalCollection = document.querySelector('.modal-collection');
+    openModalCollection(modalCollection);
+    closeModalCollection(modalCollection);
+
 }
 
-function displayModal(modalCollection) {
+function openModalCollection(modalCollection) {
     modalCollection.style.display = "flex";
 }
 
-function modalExit(modalCollection) {
-    modalCollection.style.display = "none";
+function closeModalCollection(modalCollection) {
+    let modalClose = document.querySelector('.modal-collection-close-icon');
+    modalClose.addEventListener("click", () => {
+        modalCollection.style.display = "none";
+    })
 }
 
 
@@ -126,7 +133,9 @@ function modalExit(modalCollection) {
 function getCurrentSlide(index) {
     showCurrentSlide(currentSlideIndex = index)
 }
+
 var currentSlideIndex = 1;
+
 function showCurrentSlide(currentPos) {
 
     let imgNodes = document.querySelectorAll('.modal-collection-image');
@@ -158,7 +167,7 @@ function onNextItem(n) {
     showCurrentSlide(currentSlideIndex += n);
 }
 
-function requestingFullScreen() {
+function initRequestFullscreen() {
     let fullScreen = document.querySelector('.modal-fullscreen');
     let exitFSc = document.querySelector('.exit-fullscreen');
 
@@ -173,7 +182,6 @@ function requestingFullScreen() {
 
 function openFullscreen() {
     let modalCollection = document.querySelector('.modal-collection');
-
     if (modalCollection.requestFullscreen) {
         modalCollection.requestFullscreen();
     }

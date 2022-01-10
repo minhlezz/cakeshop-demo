@@ -79,7 +79,7 @@ function onInit() {
 
 
 function showImageInstagram() {
-    let instagramID = document.querySelector("#instagramID");
+    let instagramID = document.querySelector("#instagram-photos");
     // Load template Image 
     renderImages(instagramID);
 

@@ -44,7 +44,7 @@
                 </div>
                 <!-- Readmore Modal -->
                 <div class="modal-readmore">
-                    <div class="h-100 d-flex-center-center">
+                    <div class="d-flex alg-center jtf-center h-100 ">
                         <div class="modal-readmore-content">
                             <div class="modal-close-icon" id="readmore-close">
                                 <span>&times;</span>
@@ -77,8 +77,8 @@
             <!-- bottom header -->
             <div class="bottom-header">
                 <nav class="container">
-                    <div class="d-flex-center-btw">
-                        <div class="left-wrapper pointer" id="scrollTop">
+                    <div class="d-flex alg-center jtf-spacebetween">
+                        <div class="left-wrapper curs-pointer" id="scrollTop">
                             <a href="#" class="author-logo">
                                 <span>BH</span>
                             </a>
@@ -90,13 +90,13 @@
                         <div class="right-wrapper">
                             <ul class="main-menu">
                                 <li><a href="javascript:void(0)" class="tablinks active"
-                                        onclick="changeTab(event, 'home')">Home</a></li>
+                                        onclick="onChangeTab(event, 'home')">Home</a></li>
                                 <li><a href="javascript:void(0)" class="tablinks"
-                                        onclick="changeTab(event, 'about')">About</a></li>
+                                        onclick="onChangeTab(event, 'about')">About</a></li>
                                 <li><a href="javascript:void(0)" class="tablinks"
-                                        onclick="changeTab(event, 'order')">Order Online</a></li>
+                                        onclick="onChangeTab(event, 'order')">Order Online</a></li>
                                 <li><a href="javascript:void(0)" class="tablinks"
-                                        onclick="changeTab(event, 'contact')">Contact</a></li>
+                                        onclick="onChangeTab(event, 'contact')">Contact</a></li>
                             </ul>
                             <div class="main-contact">
                                 <a href="javascript:void(0)" class="main-contact-link">
@@ -207,19 +207,19 @@
                 <!-- Content -->
                 <div class="modal-collection-body">
                     <!-- prev button -->
-                    <div class="d-flex-center-btw">
-                        <div class="arrow d-flex-center-center" id="prev-btn" onclick="onPrevItem(-1)">
+                    <div class="d-flex alg-center jtf-spacebetween">
+                        <div class="arrow d-flex alg-center jtf-center" id="prev-btn" onclick="onPrevItem(-1)">
                             &#10094;
                         </div>
                         <div class="modal-collection-content">
                             <!-- Loading images here -->
                         </div>
                         <!-- Next button -->
-                        <div class="arrow d-flex-center-center" id="next-btn" onclick="onNextItem(1)">
+                        <div class="arrow d-flex alg-center jtf-center" id="next-btn" onclick="onNextItem(1)">
                             &#10095;
                         </div>
                     </div>
-                    <div class="modal-collection-info d-flex-center-center">
+                    <div class="modal-collection-info d-flex alg-center">
                         <h1 class="modal-collection-title">I'm an image title</h1>
                         <p class="modal-collection-description">Describe your image here.</p>
                     </div>
@@ -233,7 +233,7 @@
                 <h1 class="instagram-title">Instagram</h1>
                 <div class="instagram-wrapper">
                     <!-- Image Grid -->
-                    <div class="row" id="instagramID">
+                    <div class="row" id="instagram-photos">
                     </div>
                     <!-- End Image Grid -->
                 </div>
@@ -294,7 +294,7 @@
                             drop me anywhere you like on your page. I’m a great place for you to tell a story and let
                             your
                             users know a little more about you.</p>
-                        <p class="author-description-2">
+                        <p>
                             I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit
                             Text”
                             or double click me to add your own content and make changes to the font. Feel free to drag
@@ -351,7 +351,7 @@
                             <div class="col-6">
                                 <input type="text" id="name" name="name" placeholder="Name" required>
                             </div>
-                            <div class="col-6 p-rel">
+                            <div class="col-6 pos-relative">
                                 <input type="text" id="email" name="email" placeholder="Email" onkeyup="onChangeEmail()"
                                     onclick="onChangeEmail()" onchange="onChangeEmail()" required>
                                 <div class="popup">
@@ -396,19 +396,19 @@
     <button class="chat-btn" id="chat-btn">Let's Chat!</button>
     <div class="chat-popup" id="chat-box">
         <form class="chat-container">
-            <div class="chat-header d-flex-center-center">
+            <div class="chat-header d-flex alg-center jtf-center">
                 <div class="chat-header-wrapper">
                     <h2 class="chat-header-title">Wedding Cake By Brian Hill</h2>
                     <div class="chat-header-description">
-                        <span class="green-circle"></span>
+                        <span class="online-status"></span>
                         <span>We’ll reply as soon as we can</span>
                     </div>
                 </div>
-                <div class="chat-close-btn d-flex-center-center" id="chat-close"><span>&times;</span></div>
+                <div class="chat-close-btn d-flex alg-center jtf-center" id="chat-close"><span>&times;</span></div>
             </div>
             <div class="chat-body">
                 <div class="chat-content">
-                    <div class="d-flex-center-center">
+                    <div class="d-flex alg-center jtf-center">
                         <div class="chat-time">YESTERDAY AT 8:07 PM</div>
                     </div>
                     <div class="chat-user">
@@ -449,6 +449,9 @@
 
     <!-- Script -->
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/initializeTabs.js"></script>
+    <script src="./scripts/scroll.js"></script>
+    <script src="./scripts/readMoreModal.js"></script>
     <script src="./scripts/collection.js"></script>
     <script src="./scripts/instagram.js"></script>
     <script src="./scripts/loadmore.js"></script>
