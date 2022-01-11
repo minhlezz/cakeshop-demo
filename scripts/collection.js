@@ -32,10 +32,12 @@ let collections = [
     },
 ]
 
+var currentPhotoCollectionIndex = 1;
+var currentPhotoIndex = 0;
 
 initCollection();
 
-var currentIndex = 0;
+
 
 function initCollection() {
     showCollectionPhotos();
@@ -56,30 +58,30 @@ function collectionSlider() {
     const collectionPhotos = collectionID.children;
     const collectionLength = collectionPhotos.length;
 
-    transitionItems(collectionPhotos);
+    autoTransitionPhotos(collectionPhotos);
     resetIndexAtLastItem(collectionLength);
 
 }
 
-function transitionItems(collectionPhotos) {
+function autoTransitionPhotos(collectionPhotos) {
     for (let i = 0; i < collectionPhotos.length; i++) {
-        collectionPhotos[i].style.transform = `translate(-${currentIndex * 200}px )`;
+        collectionPhotos[i].style.transform = `translate(-${currentPhotoIndex * 200}px )`;
         collectionPhotos[i].style.transitionDuration = "1s";
         collectionPhotos[i].style.transitionTimingFunction = "linear";
     }
-    currentIndex++;
+    currentPhotoIndex++;
 }
 
 function resetIndexAtLastItem(collectionLength) {
-    if (currentIndex > collectionLength) {
-        currentIndex = 0;
+    if (currentPhotoIndex > collectionLength) {
+        currentPhotoIndex = 0;
     }
 }
 
 function renderCollectionView(collectionID) {
     collections.forEach((item, index) => {
         let itemDetail = `
-            <div class="collection-card" onclick="onClickModalCollection(),getCurrentSlide(${index})" >
+            <div class="collection-card" onclick="initModalCollection(),getIndexPhotoSelection(${index})" >
                     <img src="${item.image}" alt="1" class="collection-image">
             </div>
         `
@@ -88,7 +90,7 @@ function renderCollectionView(collectionID) {
 }
 
 
-function onClickModalCollection() {
+function initModalCollection() {
     let mdCollectionContent = document.querySelector('.modal-collection-content');
     //Loading IMG into Modal Data;
     renderModalCollection(mdCollectionContent);
@@ -130,25 +132,23 @@ function closeModalCollection(modalCollection) {
 //Modal Gallery
 
 
-function getCurrentSlide(index) {
-    showCurrentSlide(currentSlideIndex = index)
+function getIndexPhotoSelection(index) {
+    showCurrentSlidePhotoCollection(currentPhotoCollectionIndex = index)
 }
 
-var currentSlideIndex = 1;
-
-function showCurrentSlide(currentPos) {
+function showCurrentSlidePhotoCollection(indexPosition) {
 
     let imgNodes = document.querySelectorAll('.modal-collection-image');
     let i;
 
     //Set slideIndex = lastIndex at the end of List
-    if (currentPos >= imgNodes.length) {
-        currentSlideIndex = imgNodes.length - 1;
+    if (indexPosition >= imgNodes.length) {
+        currentPhotoCollectionIndex = imgNodes.length - 1;
     };
 
     //Set slideIndex = firstIndex at the head of List
-    if (currentPos < 1) {
-        currentSlideIndex = 0
+    if (indexPosition < 1) {
+        currentPhotoCollectionIndex = 0
     };
 
     for (i = 0; i < imgNodes.length; i++) {
@@ -156,15 +156,15 @@ function showCurrentSlide(currentPos) {
     }
 
     // Display current slide 
-    imgNodes[currentSlideIndex].style.display = "block"
+    imgNodes[currentPhotoCollectionIndex].style.display = "block"
 }
 
 function onPrevItem(n) {
-    showCurrentSlide(currentSlideIndex += n);
+    showCurrentSlidePhotoCollection(currentPhotoCollectionIndex += n);
 }
 
 function onNextItem(n) {
-    showCurrentSlide(currentSlideIndex += n);
+    showCurrentSlidePhotoCollection(currentPhotoCollectionIndex += n);
 }
 
 function initRequestFullscreen() {

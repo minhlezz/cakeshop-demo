@@ -73,20 +73,20 @@ initInstagram()
 
 
 function initInstagram() {
-    initImageInstagram();
+    initImagesInstagram();
 }
 
 
-function initImageInstagram() {
+function initImagesInstagram() {
     let instagramID = document.querySelector("#instagram-photos");
-    renderImageInstagram(instagramID);
+    renderImagesInstagram(instagramID);
 
 }
 
-function renderImageInstagram(instagramID) {
+function renderImagesInstagram(instagramID) {
     cloneInstagrams.forEach((element, index) => {
         let photoDetail = `
-                <div class="col-4 p-5" id="instaPhotos" onclick="showModalInstagram(); currentImageSelection(${index})">
+                <div class="col-4 p-5" id="instaPhotos" onclick="showModalInstagram(); getCurrentImageSelection(${index})">
                     <div class="instagram-photos">
                         <img src="${element.image}" alt="1" class="instagram-image">
                         <div class="instragram-photos-content">
@@ -102,13 +102,17 @@ function renderImageInstagram(instagramID) {
 
 //Trigger onClick photos show Modal Box 
 function showModalInstagram() {
-    toggleModalInstagram();
-    renderContentModalInstagram();
+    initModalInstagram();
+    renderModalInstagram();
 
 }
 
-function toggleModalInstagram() {
+function initModalInstagram() {
     let modalID = document.getElementById('modal');
+    toggleModalInstagram(modalID)
+}
+
+function toggleModalInstagram(modalID) {
     openModal(modalID);
     closeModal(modalID);
 }
@@ -125,7 +129,7 @@ function closeModal(modalID) {
     });
 }
 
-function renderContentModalInstagram() {
+function renderModalInstagram() {
     let content = document.querySelector('#md-content');
     cloneInstagrams.forEach((item) => {
         let modalDetail = `
@@ -169,17 +173,16 @@ function renderContentModalInstagram() {
 }
 
 
-function currentImageSelection(index) {
-    showSlides(currentImageInstagramIndex = index);
+function getCurrentImageSelection(index) {
+    showSlideModalInstagram(currentImageInstagramIndex = index);
 }
 
 
-function showSlides(index) {
+function showSlideModalInstagram(index) {
     let photos = document.querySelectorAll(".modal-content-slide");
     hideAllPhotosInstagramInSlideshow(photos);
     setListRange(index, photos)
     displayCurrentPhoto(photos)
-
 }
 
 
@@ -207,10 +210,10 @@ function setListRange(index, photos) {
 
 
 function onPrevPhotoInstagram(numberPrev) {
-    showSlides(currentImageInstagramIndex += numberPrev);
+    showSlideModalInstagram(currentImageInstagramIndex += numberPrev);
 }
 
 function onNextPhotoInstagram(numberNext) {
-    showSlides(currentImageInstagramIndex += numberNext);
+    showSlideModalInstagram(currentImageInstagramIndex += numberNext);
 }
 
