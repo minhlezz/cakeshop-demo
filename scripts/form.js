@@ -11,21 +11,14 @@ function form() {
 function initializeForm() {
     let formResult = {};
     const form = document.getElementById('form-contact-id');
-
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const { email, phone, name, message } = getFormValues();
-        if (!validateEmail(email)) {
-            showErrorPopup();
+        const { email } = getFormValues();
+        if (!isValidEmail(email)) {
+            showErrorPopupEmailMessage();
         } else {
-            formResult = {
-                email,
-                name,
-                phone,
-                message,
-            }
-
-            showModalFormResult(formResult);
+            formResult = getFormValues();
+            showModalFormContactResult(formResult);
         }
     })
 }
@@ -48,47 +41,64 @@ function getFormValues() {
 // validate on inputing email field
 function onChangeEmail() {
     let emailValue = document.getElementById('email').value;
-    validateEmail(emailValue);
+    showEmailError(emailValue);
 }
 
-function validateEmail(value) {
-    let email = document.getElementById("email");
-    // Check value email empty || wrong pattern
-    if (!value || !validateEmailPattern(value)) {
-        email.style.backgroundColor = "#E8CFD31A"
-        email.style.borderBottom = "1px solid rgba(255, 64, 64, 0.42)"
+function showEmailError(value) {
+    if (!value || !isValidEmail(value)) {
+        showErrorBackgroundEmail(true)
         return false;
     }
-    email.style.backgroundColor = "#fff"
-    email.style.borderBottom = "1px solid var(--black)"
-    return true;
+    showErrorBackgroundEmail(false)
 }
 
-function validateEmailPattern(emailString) {
-    const regexPattern = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    let result = regexPattern.test(emailString);
-    return result
+function isValidEmail(emailString) {
+    const word = '\\w+([\\.]?\\w+)';
+    const email = '@';
+    const domain = '(\\.\\w{2,3})+';
+
+    const concatPattern = '^' + word + '*' + email + word + '*' + domain + '$';
+
+    const pattern = new RegExp(concatPattern, 'g');
+
+    return pattern.test(emailString)
 }
 
-function showErrorPopup() {
+function showErrorBackgroundEmail(value) {
+    let email = document.getElementById("email");
+    if (value === true) {
+        email.style.backgroundColor = "#E8CFD31A"
+        email.style.borderBottom = "1px solid rgba(255, 64, 64, 0.42)"
+    } else {
+        email.style.backgroundColor = "#fff"
+        email.style.borderBottom = "1px solid var(--black)"
+    }
+
+}
+
+
+function showErrorPopupEmailMessage() {
     let popup = document.getElementsByClassName('popup');
     popup[0].style.display = "block";
-
-    setTimeout(() => hidePopup(popup), 2000);
+    setTimeout(() => hidePopupErrorEmailMessage(popup), 2000);
 }
 
-function hidePopup(popup) {
+function hidePopupErrorEmailMessage(popup) {
     popup[0].style.display = "none";
 }
 
 // Handling Modal Contact
-function showModalFormResult(formData) {
-    let modalContact = document.getElementById('modal-contact');
-    let modalConfirmBtn = document.getElementById('modal-confirm-btn');
+function showModalFormContactResult(formData) {
+    const modalContact = document.getElementById('modal-contact');
 
-    loadingModalTemplate(formData);
-    openModalFormResult(modalContact);
+    renderModalContact(formData);
+    openModalFormContact(modalContact);
+    registerEventCloseModalContact(modalContact)
 
+}
+
+function registerEventCloseModalContact(modalContact) {
+    const modalConfirmBtn = document.getElementById('modal-confirm-btn');
     // Close Modal and remove formData
     modalConfirmBtn.addEventListener('click', () => {
         modalContact.style.display = "none";
@@ -97,8 +107,7 @@ function showModalFormResult(formData) {
     })
 }
 
-
-function loadingModalTemplate(formData) {
+function renderModalContact(formData) {
     let contactTemplate = document.getElementById('contact-template');
 
     const { email, name, phone, message } = formData;
@@ -128,7 +137,7 @@ function loadingModalTemplate(formData) {
 }
 
 
-function openModalFormResult(modalContact) {
+function openModalFormContact(modalContact) {
     modalContact.style.display = "flex";
 }
 
