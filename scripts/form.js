@@ -1,118 +1,113 @@
-
-form()
+form();
 
 function form() {
-    initializeForm();
-
+  initializeForm();
 }
-
-
 
 function initializeForm() {
-    let formResult = {};
-    const form = document.getElementById('form-contact-id');
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const { email } = getFormValues();
-        if (!isValidEmail(email)) {
-            showErrorPopupEmailMessage();
-        } else {
-            formResult = getFormValues();
-            showModalFormContactResult(formResult);
-        }
-    })
+  let formResult = {};
+  const form = document.getElementById("form-contact-id");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const { email } = getFormValues();
+    if (!isValidEmail(email)) {
+      showErrorEmailMessage();
+      setTimeout(() => hideErrorEmailMessage(), 2000);
+    } else {
+      formResult = getFormValues();
+      showModalContactForm(formResult);
+    }
+  });
 }
 
-
 function getFormValues() {
-    const form = document.getElementById('form-contact-id');
-    const email = form.elements["email"].value.trim();
-    const name = form.elements["name"].value.trim();
-    const phone = form.elements["phone"].value.trim();
-    const message = form.elements["message"].value.trim();
-    return {
-        email,
-        name,
-        phone,
-        message
-    }
+  const form = document.getElementById("form-contact-id");
+  const email = form.elements["email"].value.trim();
+  const name = form.elements["name"].value.trim();
+  const phone = form.elements["phone"].value.trim();
+  const message = form.elements["message"].value.trim();
+  return {
+    email,
+    name,
+    phone,
+    message,
+  };
 }
 
 // validate on inputing email field
 function onChangeEmail() {
-    let emailValue = document.getElementById('email').value;
-    showEmailError(emailValue);
+  let emailValue = document.getElementById("email").value;
+  showEmailError(emailValue);
 }
 
 function showEmailError(value) {
-    if (!value || !isValidEmail(value)) {
-        showErrorBackgroundEmail(true)
-        return false;
-    }
-    showErrorBackgroundEmail(false)
+  if (!value || !isValidEmail(value)) {
+    showBackgroundErrorInput();
+  }
+  resetBackgroundInput();
 }
 
 function isValidEmail(emailString) {
-    const word = '\\w+([\\.]?\\w+)';
-    const email = '@';
-    const domain = '(\\.\\w{2,3})+';
+  const startPattern = "^";
+  // letters without special characters except '.'.
+  const letters = "\\w+([\\.]?\\w+)*";
+  const sign = "@";
+  const endWithDomain = "(\\.\\w{2,3})+$";
 
-    const concatPattern = '^' + word + '*' + email + word + '*' + domain + '$';
+  const concatPattern = startPattern + letters + sign + letters + endWithDomain;
 
-    const pattern = new RegExp(concatPattern, 'g');
+  const pattern = new RegExp(concatPattern, "g");
 
-    return pattern.test(emailString)
+  return pattern.test(emailString);
 }
 
-function showErrorBackgroundEmail(value) {
-    let email = document.getElementById("email");
-    if (value === true) {
-        email.style.backgroundColor = "#E8CFD31A"
-        email.style.borderBottom = "1px solid rgba(255, 64, 64, 0.42)"
-    } else {
-        email.style.backgroundColor = "#fff"
-        email.style.borderBottom = "1px solid var(--black)"
-    }
-
+function showBackgroundErrorInput() {
+  const email = document.getElementById("email");
+  email.style.backgroundColor = "#E8CFD31A";
+  email.style.borderBottom = "1px solid rgba(255, 64, 64, 0.42)";
 }
 
-
-function showErrorPopupEmailMessage() {
-    let popup = document.getElementsByClassName('popup');
-    popup[0].style.display = "block";
-    setTimeout(() => hidePopupErrorEmailMessage(popup), 2000);
+function resetBackgroundInput() {
+  const email = document.getElementById("email");
+  email.style.backgroundColor = "#fff";
+  email.style.borderBottom = "1px solid var(--black)";
 }
 
-function hidePopupErrorEmailMessage(popup) {
-    popup[0].style.display = "none";
+function showErrorEmailMessage() {
+  const popup = document.getElementsByClassName("popup");
+  popup[0].style.display = "block";
+}
+
+function hideErrorEmailMessage() {
+  const popup = document.getElementsByClassName("popup");
+  popup[0].style.display = "none";
 }
 
 // Handling Modal Contact
-function showModalFormContactResult(formData) {
-    const modalContact = document.getElementById('modal-contact');
+function showModalContactForm(formData) {
+  const modalContact = document.getElementById("modal-contact");
 
-    renderModalContact(formData);
-    openModalFormContact(modalContact);
-    registerEventCloseModalContact(modalContact)
-
+  initModalContactForm(formData);
+  openModalContactForm(modalContact);
+  initCloseModalContact(modalContact);
 }
 
-function registerEventCloseModalContact(modalContact) {
-    const modalConfirmBtn = document.getElementById('modal-confirm-btn');
-    // Close Modal and remove formData
-    modalConfirmBtn.addEventListener('click', () => {
-        modalContact.style.display = "none";
-        clearFormInput();
-        clearRequestContactForm();
-    })
+function initCloseModalContact(modalContact) {
+  const modalConfirmBtn = document.getElementById("modal-confirm-btn");
+
+  modalConfirmBtn.addEventListener("click", () => {
+    closeModalContactForm(modalContact);
+    clearFormInput();
+    clearRequestContactForm();
+  });
 }
 
-function renderModalContact(formData) {
-    let contactTemplate = document.getElementById('contact-template');
+function initModalContactForm(formData) {
+  let contactTemplate = document.getElementById("contact-template");
 
-    const { email, name, phone, message } = formData;
+  const { email, name, phone, message } = formData;
 
-    let template = `
+  let template = `
         <div class="row">
             <div class="col-12">
                 <span class="fieldname">Name:</span>
@@ -132,31 +127,25 @@ function renderModalContact(formData) {
             </div>
         </div>
     `;
-    contactTemplate.insertAdjacentHTML("beforeend", template);
-
+  contactTemplate.insertAdjacentHTML("beforeend", template);
 }
 
+function openModalContactForm(modalContact) {
+  modalContact.style.display = "flex";
+}
 
-function openModalFormContact(modalContact) {
-    modalContact.style.display = "flex";
+function closeModalContactForm(modalContact) {
+  modalContact.style.display = "none";
 }
 
 function clearRequestContactForm() {
-    let contactTemplate = document.getElementById('contact-template');
+  let contactTemplate = document.getElementById("contact-template");
 
-    while (contactTemplate.hasChildNodes()) {
-        contactTemplate.removeChild(contactTemplate.firstChild);
-    };
+  while (contactTemplate.hasChildNodes()) {
+    contactTemplate.removeChild(contactTemplate.firstChild);
+  }
 }
-
 
 function clearFormInput() {
-    document.getElementById('form-contact-id').reset();
+  document.getElementById("form-contact-id").reset();
 }
-
-
-
-
-
-
-
